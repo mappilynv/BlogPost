@@ -15,11 +15,10 @@
           th:action="@{/register}"
           th:object="${user}"
           method="post">
-        <input type="text" th:field="*{username}" placeholder="Username"/>
-        <input type="password" th:field="*{password}" placeholder="Password"/>
+        <input type="text" th:field="*{username}" placeholder="Username" for="username"/>
+        <input type="password" th:field="*{password}" placeholder="Password" for="password"/>
         <button class="green-btn" type="submit">Register</button>
-
-
+        <span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
     </form>
 </div>
 

@@ -1,4 +1,4 @@
-package Blog.controller;
+package Blog.web;
 
 import Blog.model.Post;
 import Blog.service.PostService;
@@ -33,6 +33,12 @@ public class HomeController {
         model.addAttribute("posts", posts);
         return "home";
     }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
     @GetMapping("/page/{pageNo}")
     public String findPaginated(@PathVariable(value = "pageNo")int pageNo,
                                 @RequestParam("sortField") String sortField,
