@@ -8,7 +8,7 @@ import java.util.Collection;
 
 
 @Entity
-@Table(name="user")
+@Table(name="user", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 //@SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq", initialValue = 10, allocationSize = 1)
 public class User {
     @Id

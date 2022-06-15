@@ -1,4 +1,4 @@
-package Blog.web;
+package Blog.controller;
 
 import Blog.model.Post;
 import Blog.service.PostService;
@@ -34,10 +34,10 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/login")
-    public String login(Model model) {
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String login(Model model) {
+//        return "login";
+//    }
 
     @GetMapping("/page/{pageNo}")
     public String findPaginated(@PathVariable(value = "pageNo")int pageNo,

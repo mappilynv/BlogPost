@@ -29,34 +29,28 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-
-    @Override
-    public void saveUser(User user) {
-        userRepository.save(user);
-    }
-
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
     @Override
-    public User save(UserRegistrationDto registration) {
+    public void save(UserRegistrationDto registration) {
         User user = new User();
         user.setUsername(registration.getUsername());
         user.setPassword(passwordEncoder.encode(registration.getPassword()));
         user.setRoles(Arrays.asList(new Role("ROLE_USER")));
-        return userRepository.save(user);
+        userRepository.save(user);
     }
 
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
       User user = userRepository.findByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException("Invalid username or password.");
+            throw new UsernameNotFoundException("Invalid username or password. (from impl)");
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(),
-                passwordEncoder.encode(user.getPassword()),
-                mapRolesToAuthorities(user.getRoles()));
+               user.getPassword(), mapRolesToAuthorities(user.getRoles()));
     }
 
     private Collection < ? extends GrantedAuthority > mapRolesToAuthorities(Collection<Role> roles) {
@@ -65,14 +59,14 @@ public class UserServiceImpl implements UserService{
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public void deleteUserById(Long id) {
-        userRepository.deleteById(id);
-    }
-
-    @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+//    @Override
+//    public void deleteUserById(Long id) {
+//        userRepository.deleteById(id);
+//    }
+//
+//    @Override
+//    public List<User> getAllUsers() {
+//        return userRepository.findAll();
+//    }
 
 } 

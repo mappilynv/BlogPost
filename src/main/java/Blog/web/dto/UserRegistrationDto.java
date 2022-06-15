@@ -11,8 +11,8 @@ public class UserRegistrationDto {
     @NotEmpty
     private String password;
 
-    @AssertTrue
-    private Boolean terms;
+    public UserRegistrationDto() {
+    }
 
     public String getUsername() {
         return username;
@@ -28,14 +28,6 @@ public class UserRegistrationDto {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Boolean getTerms() {
-        return terms;
-    }
-
-    public void setTerms(Boolean terms) {
-        this.terms = terms;
     }
 
 

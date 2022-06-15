@@ -9,10 +9,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService extends UserDetailsService {
 
-    void saveUser (User user);
+//    void saveUser (User user);
     User findByUsername(String username);
-    void deleteUserById (Long id);
-    List <User> getAllUsers ();
-    User save(UserRegistrationDto registration);
+//    void deleteUserById (Long id);
+//    List <User> getAllUsers ();
+    void save(UserRegistrationDto registration);
 
 }
