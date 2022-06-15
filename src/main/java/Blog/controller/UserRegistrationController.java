@@ -6,6 +6,7 @@ import Blog.model.User;
 import Blog.service.UserService;
 import Blog.web.dto.UserRegistrationDto;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 //@SessionAttributes("user")
 @RequestMapping("/registration")
 public class UserRegistrationController {
+
+    @Autowired
     private UserService userService;
 
     @ModelAttribute("user")
@@ -33,10 +36,10 @@ public class UserRegistrationController {
             @Valid UserRegistrationDto userDto,
             BindingResult result){
 
-        User existing = userService.findbyUsername(userDto.getUsername());
+        User existing = userService.findByUsername(userDto.getUsername());
         if(existing!=null){
-            result.rejectValue("email", null,
-                    "There is already an account registred with that email");
+            result.rejectValue("username", null,
+                    "There is already an account registered with that username");
         }
         System.out.print("result.hasErrors():"+result.hasErrors());
         if(result.hasErrors()){

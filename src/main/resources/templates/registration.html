@@ -9,14 +9,18 @@
 
 <div class="container" th:class="align-center">
 
+    <!-- success message -->
+    <div th:if="${param.success}">
+        <div class="alert alert-info">You've successfully registered to our awesome app!</div>
+    </div>
+
     <h2>Register new user</h2>
-              Register should be found in SignupController
     <form action="#"
-          th:action="@{/register}"
+          th:action="@{/registration}"
           th:object="${user}"
           method="post">
-        <input type="text" th:field="*{username}" placeholder="Username" for="username"/>
-        <input type="password" th:field="*{password}" placeholder="Password" for="password"/>
+        <input id="username" type="text" class="form-control" th:field="*{username}" placeholder="Username" for="username"/>
+        <input id="password" type="text" class="form-control" th:field="*{password}" placeholder="Password" for="password"/>
         <button class="green-btn" type="submit">Register</button>
         <span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
     </form>

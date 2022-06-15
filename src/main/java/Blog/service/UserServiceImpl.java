@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User findbyUsername(String username) {
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
@@ -74,6 +74,5 @@ public class UserServiceImpl implements UserService{
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
 
 } 
